@@ -45,8 +45,8 @@ A **course-specific AI teaching assistant** for the Sigma Web Development course
 ### 1. Clone the repository:
 
 ```
-git clone https://github.com/yourusername/vyas-teaching-assistant.git
-cd vyas-teaching-assistant
+git clone https://github.com/vaibhavxiv/vyas-ta.git
+cd vyas-ta
 ```
 ### 2. Install dependencies
 ```bash
