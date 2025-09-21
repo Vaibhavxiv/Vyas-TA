@@ -6,7 +6,7 @@ from openai import OpenAI
 
 client = OpenAI(api_key="API-KEY")  
 
-# --------- Embedding Function ---------
+
 def create_embedding(text_list):
     response = client.embeddings.create(
         model="text-embedding-3-small",  
@@ -14,7 +14,7 @@ def create_embedding(text_list):
     )
     return [item.embedding for item in response.data]
 
-# --------- Inference Function ---------
+
 def inference(prompt):
     response = client.chat.completions.create(
         model="gpt-4o-mini",   # fast + cheap; 
@@ -22,10 +22,10 @@ def inference(prompt):
     )
     return response.choices[0].message.content
 
-# --------- Load Saved Embeddings ---------
+
 df = joblib.load("embeddings.joblib")
 
-# --------- Query ---------
+
 def answer_query(incoming_query,top_results=5):
 
     question_embedding = create_embedding([incoming_query])[0]
@@ -35,7 +35,7 @@ def answer_query(incoming_query,top_results=5):
     max_indx = similarities.argsort()[::-1][0:top_results]
     new_df = df.loc[max_indx]
 
-    # --------- Build Prompt ---------
+    
     prompt = f"""
     You are a helpful teaching assistant for my Sigma Web Development course.
 
@@ -62,8 +62,9 @@ def answer_query(incoming_query,top_results=5):
     """
 
 
-    # --------- Run Inference ---------
+
     answer = inference(prompt)
     return answer,new_df
+
 
 
