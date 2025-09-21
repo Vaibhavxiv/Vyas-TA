@@ -36,4 +36,5 @@ df = pd.DataFrame.from_records(my_dicts)
 
 # Save DataFrame with embeddings
 joblib.dump(df, 'embeddings.joblib')
-print("✅ Embeddings saved to embeddings.joblib")
+print("Embeddings saved to embeddings.joblib")
+
